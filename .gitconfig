@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = master
+[user]
+	email = l.g.colpani@gmail.com
+	name = Lorenzo Colpani
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret

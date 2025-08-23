@@ -1,0 +1,25 @@
+# Ignore caches and local data
+.cache/
+*.cache
+.local/
+.DS_Store
+
+# Ignore shell history files
+.bash_history
+.zsh_history
+
+# Ignore programming language artifacts
+node_modules/
+.cargo/
+venv/
+__pycache__/
+
+# Ignore editor swap/backup files
+*~
+*.swp
+*.swo
+
+# Ignore secrets and local-only configs
+*secret*
+*token*
+*.local
