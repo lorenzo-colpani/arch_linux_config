@@ -6,7 +6,9 @@ bluez-utils
 brave-bin
 clipse
 efibootmgr
+fd
 fuzzel
+fzf
 git
 grim
 grub
@@ -15,6 +17,7 @@ hyprland
 hyprpolkitagent
 intel-ucode
 kitty
+lazygit
 less
 lib32-nvidia-utils
 lib32-vulkan-icd-loader
@@ -28,9 +31,12 @@ lvm2
 mako
 mesa
 mesa-utils
+neovim
 network-manager-applet
 networkmanager
+nodejs
 noto-fonts-emoji
+npm
 nvidia-open-dkms
 nvidia-utils
 nvtop
@@ -39,6 +45,7 @@ paru-debug
 pavucontrol
 pipewire-pulse
 qt5-wayland
+ripgrep
 rsync
 sddm
 slurp
@@ -49,6 +56,7 @@ sudo
 swappy
 terminus-font
 ttf-jetbrains-mono-nerd
+unzip
 vulkan-icd-loader
 vulkan-intel
 waybar
