@@ -1,0 +1,4 @@
+# Ignore clipse history and logs
+clipboard_history.json
+clipse.log
+tmp_files/*

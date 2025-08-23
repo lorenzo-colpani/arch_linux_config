@@ -1,0 +1,23 @@
+/*
+ * ~/.config/wlogout/style.css
+ * A simple floating window style
+ */
+
+window {
+  background-color: rgba(30, 30, 46, 0.9);
+  border: 2px solid #5d5d5d;
+  border-radius: 12px;
+  width: 400px;
+  height: 200px;
+  padding: 10px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  color: #cdd6f4;
+}
+
+button:hover {
+  background-color: #44475a;
+}

@@ -1,0 +1,34 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+
+    "modules-left": [],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "network"],
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        },
+        "on-click": "activate"
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format-wifi": "{essid} ({signal_strength}%)",
+        "tooltip-format-ethernet": "{ifname} connected",
+        "on-click": "nmcli device wifi list"
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%I:%M %p}"
+    }
+}
