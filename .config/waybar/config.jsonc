@@ -1,34 +1,65 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 30,
-
-    "modules-left": [],
-    "modules-center": ["clock"],
-    "modules-right": ["tray", "network"],
-
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            "active": "",
-            "default": ""
-        },
-        "on-click": "activate"
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "modules-left": [
+    "hyprland/workspaces",
+    "mpris"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "tray",
+    "custom/audio-selector",
+    "network"
+  ],
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": ""
     },
-    "tray": {
-        "icon-size": 18,
-        "spacing": 10
+    "on-click": "activate"
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 20
+  },
+  "network": {
+    "interface": "wlo1",
+    "format-wifi": "       {essid} ({signalStrength}%)",
+    "format-ethernet": " {ifname}",
+    "format-disconnected": "⚠ Disconnected",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname} connected",
+    "on-click": "nmcli device wifi list"
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%I:%M %p}"
+  },
+  "custom/audio-selector": {
+    "format": "🔊 {}",
+    "exec": "~/.config/waybar/scripts/audio_control.sh display",
+    "interval": 1,
+    "on-click": "~/.config/waybar/scripts/audio_control.sh switch",
+    "tooltip": "Click to switch audio output"
+  },
+  "mpris": {
+    "format": "{player_icon} {title} - {artist}",
+    "format-stopped": "", // This hides the module when no music is playing
+    "player-icons": {
+      "default": "▶",
+      "spotify": ""
     },
-    "network": {
-        "format-wifi": " {essid}",
-        "format-ethernet": " {ifname}",
-        "format-disconnected": "⚠ Disconnected",
-        "tooltip-format-wifi": "{essid} ({signal_strength}%)",
-        "tooltip-format-ethernet": "{ifname} connected",
-        "on-click": "nmcli device wifi list"
+    "status-icons": {
+      "playing": "▶",
+      "paused": "⏸"
     },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%I:%M %p}"
-    }
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-scroll-up": "playerctl previous",
+    "on-scroll-down": "playerctl next"
+  }
 }
