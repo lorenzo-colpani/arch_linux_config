@@ -39,6 +39,7 @@ paru-debug
 pavucontrol
 pipewire-pulse
 qt5-wayland
+rsync
 sddm
 slurp
 spotify-launcher
