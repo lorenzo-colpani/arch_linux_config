@@ -44,6 +44,7 @@ paru
 paru-debug
 pavucontrol
 pipewire-pulse
+python-pip
 qt5-wayland
 ripgrep
 rsync
@@ -54,13 +55,17 @@ starship
 steam
 sudo
 swappy
+ta-lib
 terminus-font
 ttf-jetbrains-mono-nerd
+tuxedo-control-center-bin
 unzip
+uv
 vulkan-icd-loader
 vulkan-intel
 waybar
 wev
+wget
 wl-clipboard
 wlogout
 wlr-randr
