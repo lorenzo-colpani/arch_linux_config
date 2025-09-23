@@ -5,6 +5,7 @@ bluez
 bluez-utils
 brave-bin
 clipse
+cuda
 efibootmgr
 fd
 fuzzel
@@ -13,6 +14,7 @@ git
 grim
 grub
 gvim
+htop
 hyprland
 hyprpolkitagent
 intel-ucode
@@ -46,6 +48,8 @@ pavucontrol
 pipewire-pulse
 python-pip
 qt5-wayland
+qt5ct
+qt6ct
 ripgrep
 rsync
 sddm
