@@ -1,3 +1,4 @@
+7zip
 base
 base-devel
 blueman
@@ -75,4 +76,5 @@ wlogout
 wlr-randr
 xdg-desktop-portal-hyprland
 xorg-xwayland
+zip
 zsh
