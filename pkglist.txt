@@ -9,6 +9,7 @@ clipse
 cuda
 efibootmgr
 fd
+freerdp
 fuzzel
 fzf
 git
@@ -51,6 +52,7 @@ python-pip
 qt5-wayland
 qt5ct
 qt6ct
+remmina
 ripgrep
 rsync
 sddm
