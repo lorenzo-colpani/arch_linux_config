@@ -10,6 +10,7 @@
     "clock"
   ],
   "modules-right": [
+    "battery",
     "tray",
     "custom/audio-selector",
     "network"
@@ -46,8 +47,25 @@
     "on-click": "~/.config/waybar/scripts/audio_control.sh switch",
     "tooltip": "Click to switch audio output"
   },
+  "battery": {
+    "format": "{icon}   {capacity}%",
+    "format-charging": "⚡   {capacity}%",
+    "format-plugged": "🔌   {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "tooltip": true
+  },
   "mpris": {
-    "format": "{player_icon} {title} - {artist}",
+    "format": "{player_icon}   {title} - {artist}",
     "format-stopped": "", // This hides the module when no music is playing
     "player-icons": {
       "default": "▶",

@@ -12,6 +12,7 @@ fd
 freerdp
 fuzzel
 fzf
+gamemode
 git
 grim
 grub
@@ -20,6 +21,7 @@ htop
 hyprland
 hyprpolkitagent
 intel-ucode
+jq
 kitty
 lazygit
 less
