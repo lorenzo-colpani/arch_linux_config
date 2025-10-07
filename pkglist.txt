@@ -72,6 +72,7 @@ unzip
 uv
 vulkan-icd-loader
 vulkan-intel
+vulkan-tools
 waybar
 wev
 wget
