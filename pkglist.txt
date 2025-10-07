@@ -50,6 +50,7 @@ paru
 paru-debug
 pavucontrol
 pipewire-pulse
+protonup-qt
 python-pip
 qt5-wayland
 qt5ct
