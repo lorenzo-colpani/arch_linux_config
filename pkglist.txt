@@ -20,11 +20,13 @@ gvim
 htop
 hyprland
 hyprpolkitagent
+intel-gpu-tools
 intel-ucode
 jq
 kitty
 lazygit
 less
+lib32-gamemode
 lib32-mangohud
 lib32-nvidia-utils
 lib32-vulkan-icd-loader
@@ -46,6 +48,7 @@ nodejs
 noto-fonts-emoji
 npm
 nvidia-open-dkms
+nvidia-prime
 nvidia-utils
 nvtop
 paru

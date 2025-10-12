@@ -22,7 +22,7 @@ echo "Monitors to disable: $OTHER_MONITORS"
 for MONITOR in $OTHER_MONITORS; do
   echo "Disabling monitor: $MONITOR"
   # Use 'hyprctl keyword monitor' with the 'name, disable' syntax
-  hyprctl dispatch dpms off "$MONITOR"
+  hyprctl keyword monitor "$MONITOR, disable"
 done
 
 echo "Done. All monitors except $CURRENT_MONITOR are disabled."
