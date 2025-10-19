@@ -1,4 +1,7 @@
 7zip
+alsa-firmware
+alsa-tools
+alsa-utils
 base
 base-devel
 blueman
@@ -6,6 +9,7 @@ bluez
 bluez-utils
 brave-bin
 clipse
+cmake
 cuda
 efibootmgr
 fd
@@ -51,9 +55,13 @@ nvidia-open-dkms
 nvidia-prime
 nvidia-utils
 nvtop
+ollama
+ollama-cuda
 paru
 paru-debug
 pavucontrol
+pipewire-alsa
+pipewire-jack
 pipewire-pulse
 protonup-qt
 python-pip
@@ -72,6 +80,7 @@ sudo
 swappy
 ta-lib
 terminus-font
+tree
 ttf-jetbrains-mono-nerd
 tuxedo-control-center-bin
 unzip
