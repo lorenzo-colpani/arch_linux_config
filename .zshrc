@@ -106,3 +106,65 @@ eval "$(starship init zsh)"
 alias steam-bg='nohup steam > /dev/null 2>&1 &'
 # Alias to run the dotfiles backup and push script from anywhere
 alias savedots='~/dotfiles/save.sh'
+
+alias bmake='bear -- make'
+
+# C Development Alias
+run_c() {
+    local file="$1"
+    local base="${1%.*}"
+    
+    # Use clang for better errors and address sanitization
+    clang -std=c17 -Wall -Wextra -Wpedantic -g -fsanitize=address "$file" -o "$base" && \
+    ./"$base" && \
+    rm "$base"
+}
+alias rc=run_c
+
+# Professional Build & Run
+r() {
+    if [[ -f "Makefile" ]]; then
+        bmake && ./bin/program
+    else
+        run_c
+    fi
+}
+alias rc=run_c
+
+# Start a new C project
+c_start() {
+    # 1. Create the folders
+    mkdir -p src include build bin
+    
+    # 2. Generate the Makefile automatically using a 'heredoc'
+    cat << 'EOF' > Makefile
+CC      := clang
+CFLAGS  := -std=c17 -Wall -Wextra -Wpedantic -g -Iinclude -fsanitize=address
+LDFLAGS := -fsanitize=address
+SRC_DIR := src
+OBJ_DIR := build
+BIN_DIR := bin
+TARGET  := $(BIN_DIR)/program
+
+SRCS    := $(wildcard $(SRC_DIR)/*.c)
+OBJS    := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS) | $(BIN_DIR)
+	$(CC) $(LDFLAGS) $^ -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR) $(BIN_DIR):
+	mkdir -p $@
+
+clean:
+	rm -rf $(OBJ_DIR) $(BIN_DIR)
+
+.PHONY: all clean
+EOF
+
+    echo "Successfully initialized professional C project in $(pwd)"
+}

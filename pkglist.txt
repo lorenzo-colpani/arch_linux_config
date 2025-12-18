@@ -8,9 +8,11 @@ blueman
 bluez
 bluez-utils
 brave-bin
+brightnessctl
 clipse
 cmake
 cuda
+drawio-desktop
 efibootmgr
 fd
 freerdp
@@ -24,6 +26,8 @@ gvim
 htop
 hyprland
 hyprpolkitagent
+imagemagick
+inkscape
 intel-gpu-tools
 intel-ucode
 jq
@@ -57,12 +61,16 @@ nvidia-utils
 nvtop
 ollama
 ollama-cuda
+optipng
 paru
 paru-debug
 pavucontrol
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
+podman
+podman-compose
+poppler
 protonup-qt
 python-pip
 qt5-wayland
@@ -71,6 +79,7 @@ qt6ct
 remmina
 ripgrep
 rsync
+rustup
 sddm
 slurp
 spotify-launcher
