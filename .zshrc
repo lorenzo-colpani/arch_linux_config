@@ -106,8 +106,7 @@ eval "$(starship init zsh)"
 alias steam-bg='nohup steam > /dev/null 2>&1 &'
 # Alias to run the dotfiles backup and push script from anywhere
 alias savedots='~/dotfiles/save.sh'
-
-alias bmake='bear -- make'
+alias  reload='source ~/.zshrc'
 
 # C Development Alias
 run_c() {
@@ -121,50 +120,96 @@ run_c() {
 }
 alias rc=run_c
 
-# Professional Build & Run
-r() {
-    if [[ -f "Makefile" ]]; then
-        bmake && ./bin/program
-    else
-        run_c
-    fi
-}
-alias rc=run_c
 
-# Start a new C project
-c_start() {
-    # 1. Create the folders
-    mkdir -p src include build bin
+mkcproj() {
+    local proj_name=$1
+    [[ -z "$proj_name" ]] && { echo "Usage: mkcproj <name>"; return 1; }
+
+    mkdir -p "$proj_name"/{include/"$proj_name",src,tests,docs,external,build/debug,build/release}
+    touch "$proj_name"/{README.md,LICENSE}
     
-    # 2. Generate the Makefile automatically using a 'heredoc'
-    cat << 'EOF' > Makefile
-CC      := clang
-CFLAGS  := -std=c17 -Wall -Wextra -Wpedantic -g -Iinclude -fsanitize=address
-LDFLAGS := -fsanitize=address
-SRC_DIR := src
-OBJ_DIR := build
-BIN_DIR := bin
-TARGET  := $(BIN_DIR)/program
+    # .gitignore
+    echo "build/\n.cache/\n*.o\n*.so\n.DS_Store" > "$proj_name"/.gitignore
 
-SRCS    := $(wildcard $(SRC_DIR)/*.c)
-OBJS    := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+    # src/main.c
+    cat <<EOF > "$proj_name"/src/main.c
+#include <stdio.h>
 
-all: $(TARGET)
-
-$(TARGET): $(OBJS) | $(BIN_DIR)
-	$(CC) $(LDFLAGS) $^ -o $@
-
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(OBJ_DIR) $(BIN_DIR):
-	mkdir -p $@
-
-clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
-
-.PHONY: all clean
+int main(void) {
+    #ifdef NDEBUG
+        printf("Running in PRODUCTION mode.\n");
+    #else
+        printf("Running in DEBUG mode (Sanitizers active).\n");
+    #endif
+    return 0;
+}
 EOF
 
-    echo "Successfully initialized professional C project in $(pwd)"
+    # CMakeLists.txt
+    cat <<EOF > "$proj_name"/CMakeLists.txt
+cmake_minimum_required(VERSION 3.10)
+project($proj_name C)
+
+set(CMAKE_C_STANDARD 17)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+# Setup Flags based on Build Type
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_compile_options(-Wall -Wextra -Wpedantic -g -fsanitize=address)
+    add_link_options(-fsanitize=address)
+else()
+    add_compile_options(-O3 -march=native)
+    add_definitions(-DNDEBUG)
+endif()
+
+# Core Targets
+add_library(\${PROJECT_NAME}_lib INTERFACE)
+target_include_directories(\${PROJECT_NAME}_lib INTERFACE include)
+
+add_executable(\${PROJECT_NAME}_run src/main.c)
+target_link_libraries(\${PROJECT_NAME}_run PRIVATE \${PROJECT_NAME}_lib)
+target_include_directories(\${PROJECT_NAME}_run PRIVATE src)
+EOF
+
+    echo "✅ Project '$proj_name' initialized."
+    echo "Commands: 'bdeb' for Debug, 'bprod' for Production."
+    cd ./"$proj_name" }
+
+# --- Debug Build & Run ---
+bdeb() {
+    local root_dir=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+    mkdir -p "$root_dir/build/debug"
+    pushd "$root_dir/build/debug" > /dev/null
+
+    if [[ ! -f "build.ninja" ]]; then
+        echo "󱁤 Configuring DEBUG build (ASan + C17 + Ninja)..."
+        cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug ../..
+    fi
+
+    if ninja; then
+        echo "🚀 Running Debug..."
+        local exe=$(find . -maxdepth 1 -type f -name "*_run" | head -n 1)
+        [[ -n "$exe" ]] && "$exe" || echo "❌ No executable found."
+    fi
+    popd > /dev/null
 }
+
+# --- Production Build & Run ---
+bprod() {
+    local root_dir=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+    mkdir -p "$root_dir/build/release"
+    pushd "$root_dir/build/release" > /dev/null
+
+    if [[ ! -f "build.ninja" ]]; then
+        echo "󱁤 Configuring PRODUCTION build (O3 Optimization + Ninja)..."
+        cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../..
+    fi
+
+    if ninja; then
+        echo "🚀 Running Production..."
+        local exe=$(find . -maxdepth 1 -type f -name "*_run" | head -n 1)
+        [[ -n "$exe" ]] && "$exe" || echo "❌ No executable found."
+    fi
+    popd > /dev/null
+}
+
