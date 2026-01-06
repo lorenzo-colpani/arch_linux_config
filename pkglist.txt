@@ -53,6 +53,7 @@ neovim
 network-manager-applet
 networkmanager
 nodejs
+nordvpn-bin
 noto-fonts-emoji
 npm
 nvidia-open-dkms
@@ -61,6 +62,7 @@ nvidia-utils
 nvtop
 ollama
 ollama-cuda
+opencode-bin
 optipng
 paru
 paru-debug
@@ -71,6 +73,7 @@ pipewire-pulse
 podman
 podman-compose
 poppler
+protontricks
 protonup-qt
 python-pip
 qt5-wayland
