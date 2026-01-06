@@ -45,11 +45,10 @@ for file in "${home_files[@]}"; do
   cp "$file" .
 done
 
-# Ensure the .config directory exists before copying into it
-mkdir -p .config
-
 # Copy directories from the .config folder
 for dir in "${config_dirs[@]}"; do
+  mkdir -p ".config/$(dirname "$dir")"
+
   rsync -a --delete ~/.config/"$dir"/ .config/"$dir"/
 done
 echo "✅ Files copied."
