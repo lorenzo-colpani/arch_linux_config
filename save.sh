@@ -24,6 +24,7 @@ config_dirs=(
   kitty
   wlogout
   clipse
+  opencode/agent
 )
 # --- END OF LISTS ---
 
