@@ -2,6 +2,7 @@
 alsa-firmware
 alsa-tools
 alsa-utils
+android-studio
 base
 base-devel
 blueman
@@ -64,6 +65,7 @@ ollama
 ollama-cuda
 opencode-bin
 optipng
+pacman-contrib
 paru
 paru-debug
 pavucontrol
