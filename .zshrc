@@ -1,9 +1,20 @@
+# Set Neovim as the default editor
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# Optional: Alias 'v' to 'nvim' for even faster typing
+alias v='nvim'
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Point Ollama to the massive /home partition
+export OLLAMA_MODELS="/home/.ollama_storage"
+
+# Optional: A quick command to start the server in the background silently
+alias ollama-bg='nohup ollama serve > /tmp/ollama.log 2>&1 &'
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -212,4 +223,11 @@ bprod() {
     fi
     popd > /dev/null
 }
+export PATH="$HOME/.cargo/bin:$PATH"
+
+alias support='flatpak run com.rustdesk.RustDesk'
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/lorenzo/.lmstudio/bin"
+# End of LM Studio CLI section
 

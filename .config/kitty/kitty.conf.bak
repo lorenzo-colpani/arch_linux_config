@@ -3,9 +3,3 @@ font_family JetBrainsMono Nerd Font Mono
 
 # Fallback font for emojis
 symbol_map U+2000-U+2FFF,U+1F000-U+1FFFF Noto Color Emoji
-
-
-# BEGIN_KITTY_THEME
-# Duskfox
-include current-theme.conf
-# END_KITTY_THEME
