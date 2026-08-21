@@ -54,6 +54,7 @@ lmstudio-bin
 lvm2
 mako
 mangohud
+mermaid-cli
 mesa
 mesa-utils
 neovim

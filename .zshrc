@@ -238,3 +238,4 @@ fi
 if [[ ! " ${plugins[@]} " =~ " zsh-syntax-highlighting " ]]; then
     plugins+=(zsh-syntax-highlighting)
 fi
+export HOSTINGER_API_TOKEN="b31ja3bqvvnp7RTZ0YrDFRRdMqMrpTz7pPxjbEZS0f0cd3db"

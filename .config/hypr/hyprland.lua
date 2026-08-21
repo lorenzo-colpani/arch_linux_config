@@ -2,6 +2,7 @@
 ---- MONITORS ----
 -----------------
 hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = 1 })
+hl.monitor({ output = "desc:BNQ BenQ GW3290QT 97R00432019", mode = "preferred", position = "auto", scale = 1 })
 hl.monitor({
 	output = "desc:BNQ BenQ GW2790QT 69P00718019",
 	mode = "preferred",
@@ -9,7 +10,6 @@ hl.monitor({
 	scale = 1,
 	transform = 1,
 })
-hl.monitor({ output = "desc:BNQ BenQ GW3290QT 97R00432019", mode = "preferred", position = "auto", scale = 1 })
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto" })
 
 ---------------------
