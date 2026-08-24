@@ -238,4 +238,3 @@ fi
 if [[ ! " ${plugins[@]} " =~ " zsh-syntax-highlighting " ]]; then
     plugins+=(zsh-syntax-highlighting)
 fi
-opencode -s ses_fda469f7effeOhDj6O1ouEGSPb
