@@ -24,7 +24,6 @@ config_dirs=(
   kitty
   wlogout
   clipse
-  opencode/agent
 )
 # --- END OF LISTS ---
 
@@ -51,16 +50,20 @@ for dir in "${config_dirs[@]}"; do
 
   rsync -a --delete ~/.config/"$dir"/ .config/"$dir"/
 done
+
+# Sync the whole opencode config (skills, tools, AGENTS.md), skip node_modules
+rsync -a --delete --exclude 'node_modules' ~/.config/opencode/ .config/opencode/
 echo "✅ Files copied."
 
-one
-echo "✅ Files copied."
-
-# --- Step 3: Git Commands ---
+# --- Step 3: Git Commands (skip commit when nothing changed) ---
 COMMIT_MSG="Automated update: $(date +"%Y-%m-%d %H:%M:%S")"
 echo ">>> Staging, committing, and pushing..."
 git add .
-git commit -m "$COMMIT_MSG"
-git push --set-upstream origin master
+if git diff --cached --quiet; then
+  echo "Nothing to commit."
+else
+  git commit -m "$COMMIT_MSG"
+fi
+git push 2>/dev/null || git push --set-upstream origin master
 
 echo "✅ All done!"
