@@ -1,41 +1,41 @@
 ---
 name: plans
-description: Loads the repo's roadmap context for work on this project's plans. Use when the user mentions plans, the roadmap, plans.md, plans.yaml, or the plans/ folders, or before starting any task tied to a plan.
+description: Loads the repo's roadmap context for work on this project's plans. Use when the user mentions plans, the roadmap, plans.db, or before starting any task tied to a plan.
 ---
 
 # Plan System
 
-The roadmap lives in `plans.md`, `plans/<name>/`, and a per-project SQLite
-registry served by the `mind` MCP server (tools prefixed `plans_`).
-`plans.md` is the source of truth for the process. The registry is the source
-of truth for state. `plans.yaml` is a generated snapshot — never edit it.
+The roadmap is one committed SQLite file, `plans.db`, at the repo root.
+The `mind` MCP server serves it (`plans_*` tools). The file is the only
+artifact: plans, dependencies, todos, and notes all live inside it. No
+markdown, no YAML, nothing generated. A fresh clone already holds the
+full history.
 
-If the repo has no `plans.md`, this system does not apply here. Stop and say so.
+If the repo has no `plans.db`, this system does not apply here. Stop and
+say so.
 
 ## Before plan work
 
-1. Read `plans.md`. It defines the lifecycle and the index.
-2. Call `plans_show` (no arguments) for the board. Check `status`,
-   `progress`, dependencies of the target plan.
-3. Read `plans/<name>/README.md`. It holds the branch, steps, and done criteria.
-4. Read `plans/<name>/discussion.md`. Required when `status` is `in_progress`
-   or the README lists open points.
+1. Call `plans_show` (no arguments) for the board. With a name: the full
+   record — goal, context, definition of done, steps, notes.
+2. Call `plans_ready` for what is unblocked right now.
 
-Respect `depends_on`. A plan starts only when its dependencies are `done`.
-Call `plans_ready` to see what is unblocked right now.
+Respect `depends_on`. A plan starts only when its dependencies are
+`done`.
 
 ## While you work
 
 - Set `status: in_progress` with `plans_update` when you start.
-- Write notes and blockers into `progress` with `plans_update`.
-- Append decisions to `plans/<name>/discussion.md`.
-- Mutating tools sync `plans.md` and regenerate `plans.yaml` automatically.
-  Never edit those two files by hand.
+- Work through `plans_todo_add` / `plans_todo_edit` (statuses:
+  pending, in_progress, done). Todos are the plan's steps.
+- Log decisions, findings, and open points with `plans_note_add` as
+  they happen. Append-only; the next reader needs this context.
+- `plans_show <name>` is the whole truth — never read or edit
+  `plans.db` by hand.
 
 ## On completion
 
-1. Run the review gate: the `code-review` skill.
+1. Run the review gate named in the plan's `review_type`
+   (deep|quick|none): the `code-review` skill.
 2. Set `status: done` plus the squash-merge commit with `plans_update`.
-3. Delete the plan folder.
-
-Do not copy these rules elsewhere. `plans.md` owns them.
+3. Commit `plans.db` as its own `chore(plans):` commit.

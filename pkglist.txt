@@ -60,6 +60,7 @@ mesa-utils
 neovim
 network-manager-applet
 networkmanager
+ngrok
 nodejs
 nordvpn-bin
 noto-fonts-emoji
@@ -72,6 +73,7 @@ oha
 ollama
 ollama-cuda
 opencode-bin
+openslide
 optipng
 pacman-contrib
 paru
