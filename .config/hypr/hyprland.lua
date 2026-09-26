@@ -43,10 +43,7 @@ hl.env("AQ_DRM_DEVICES", "/dev/dri/nvidia-dgpu:/dev/dri/intel-igpu")
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 hl.env("__GL_VRR_ALLOWED", "1")
-hl.env("WLR_NO_HARDWARE_CURSORS", "1")
-hl.env("WLR_DRM_NO_ATOMIC", "1")
 hl.env("XDG_SESSION_TYPE", "wayland")
-hl.env("GBM_BACKEND", "nvidia-drm")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 
 -----------------------

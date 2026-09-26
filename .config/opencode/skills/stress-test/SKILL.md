@@ -19,3 +19,8 @@ A dialogue skill. You argue, the user decides. Do not write production code.
    - **Change.** Concrete adjustments before build.
 
 Ask sharp questions. One idea per question. Push until the design is either solid or clearly broken.
+
+## Outcome
+
+Log the final verdict (Holds / Fragile / Change) with `plans_note_add`
+into the relevant plan. No side files — the plan notes are the record.

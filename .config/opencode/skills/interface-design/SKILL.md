@@ -23,3 +23,5 @@ Contracts come first. Explore before you commit.
 - Show real signatures, not descriptions.
 - Pros and cons stay concrete: "callers import two traits", not "a bit complex".
 - Challenge an existing awkward contract instead of preserving it.
+- Log the picked contract and the runner-up trade-off with
+  `plans_note_add`. No side files.

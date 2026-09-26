@@ -33,6 +33,7 @@ sudo -v # Ask for password upfront
 mkdir -p etc-backups
 sudo cp /etc/default/grub ./etc-backups/grub
 sudo cp /etc/mkinitcpio.conf ./etc-backups/mkinitcpio.conf
+sudo cp /etc/modprobe.d/nvidia.conf ./etc-backups/nvidia.conf
 pacman -Qeq >~/pkglist.txt
 echo "✅ Backups updated."
 

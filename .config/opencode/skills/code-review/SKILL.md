@@ -34,11 +34,13 @@ Report findings by severity. Include file and line.
 Run the classic gate. Then:
 
 1. Spawn two subagents with the task tool. Give each the diff and a distinct angle:
-   - **Reviewer A — craft.** Function size, duplication, naming, lifetimes, abstraction fit.
-   - **Reviewer B — risk.** Business rules, security, edge cases, error paths, concurrency.
+   - **Reviewer A — craft.** Code smells, DRY violations, duplication, function size, naming, lifetimes, abstraction fit.
+   - **Reviewer B — bugs and security.** Correctness bugs, broken business rules, security holes, edge cases, error paths, concurrency.
 2. Collect both reports.
 3. Validate every finding yourself against the real code. Discard false positives.
 4. Merge into one report: severity, file, line, proposed fix.
 5. Apply the production-code approval rule before any edit.
 
 Finish with: removed tests, added edge cases, approved fixes, remaining risks.
+
+Findings worth keeping go into the plan record with `plans_note_add`.
