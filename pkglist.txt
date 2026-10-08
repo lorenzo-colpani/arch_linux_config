@@ -10,6 +10,7 @@ bluez-utils
 brave-bin
 brightnessctl
 bun
+caddy
 clipse
 cmake
 cuda
@@ -23,6 +24,7 @@ fzf
 gamemode
 git
 go
+google-cloud-cli
 grim
 grub
 gvim

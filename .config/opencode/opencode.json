@@ -8,6 +8,11 @@
           "options": {
             "temperature": 1,
             "top_p": 0.95,
+            "provider": {
+              "quantizations": [
+                "fp8"
+              ]
+            }
           }
         }
       }
